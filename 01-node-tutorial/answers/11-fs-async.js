@@ -18,7 +18,7 @@ writeFile("./temporary/fileB.txt", "This is line 1\n", (err, result) => {
           if (err) {
             console.log("This error happened: ", err);
           } else {
-            console.log("fileB.txt is complete");
+            console.log("fileB.txt is completed");
           }
         });
       }

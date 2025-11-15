@@ -21,19 +21,39 @@ const getBody = (req, callback) => {
 };
 
 // here, you could declare one or more variables to store what comes back from the form.
-let item = "Enter something below.";
+let item = "";
+
+
+let secretNumber = Math.floor(Math.random() * 10) + 1;;
 
 // here, you can change the form below to modify the input fields and what is displayed.
 // This is just ordinary html with string interpolation.
 const form = () => {
+  let message = "Enter a number between 1 and 10.";
+  
+  if(item !== "") {
+    const guess = Number(item);
+    if (guess === secretNumber) {
+      message = `Correct! It is ${guess}. Try another game.`;
+      secretNumber = Math.floor(Math.random() * 10) + 1;
+    } else if (guess > secretNumber) {
+      message = `${guess} is too high! Enter a number between 1 and 10.`;
+    } else {
+      message = `${guess} is too low! Enter a number between 1 and 10.`;
+    }
+  }
+
+
   return `
-  <body>
-  <p>${item}</p>
-  <form method="POST">
-  <input name="item"></input>
-  <button type="submit">Submit</button>
-  </form>
-  </body>
+    <body>
+    <h2>Guess the number</h2>
+    <p>${message}</p>
+
+    <form method="POST">
+      <input name="item"></input>
+      <button type="submit">Submit</button>
+    </form>
+    </body>
   `;
 };
 

@@ -2,3 +2,4 @@
 /content/big.txt
 answers/temporary/*
 !answers/temporary/.keep
+answers/node_modules

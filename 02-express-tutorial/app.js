@@ -3,7 +3,8 @@ console.log('Express Tutorial')
 const express = require('express');
 const { products } = require("./data");
 
-const app = express();
+const app = express();   
+
 
 //middleware
 app.use(express.static("./public"))

@@ -1,0 +1,17 @@
+<h1>hello villy</h1>
+<button onclick="fetchData()">Fetch Data</button>
+<div id="data"></div>
+
+
+<script>
+
+    const fetchData=() => {
+        fetch('/api/v1/products')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('data').innerText=JSON.stringify(data);
+
+            })
+            .catch(error => console.error('Error fetching data:',error));
+    }   
+</script>

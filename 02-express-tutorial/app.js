@@ -22,7 +22,7 @@ const auth = (req, res, next) => {
     return next();
   }
   else {
-    return res.status(401).json({ message: "Unauthorized access." });
+    return res.status(401).json({ success: false, message: "Unauthorized access." });
   }
 }
 
@@ -43,7 +43,7 @@ app.use("/api/v1/people", peopleRouter);
 app.use("/api/v1/products", productRouter);
 
 app.get('/api/v1/test', (req, res) => {
-  res.json({ message: "It worked!" });
+  res.json({  success: true, message: "It worked!" });
 });
 
 
@@ -52,15 +52,15 @@ app.post("/logon", (req, res) => {
   const {name} = req.body;
   if(name){
     res.cookie("name", name);
-    res.status(201).json({ message: `Hello ${name}!`});
+    res.status(201).json({ success: true, message: `Hello ${name}!`});
   }
   else {
-    res.status(400).json({ message: "name not present"})
+    res.status(400).json({  success: false, message: "name not present"})
   }
  })
 app.delete("/logoff", (req, res) => {
   res.clearCookie("name");
-  res.status(200).json({ message: " user logged off"});
+  res.status(200).json({ success: true, message: " user logged off"});
 
 
  })
@@ -68,7 +68,7 @@ app.delete("/logoff", (req, res) => {
  // app.use(auth)
 app.get("/test", auth, (req, res) =>{
 
-  res.status(200).json({ message: `Welcome ${req.user}!`});
+  res.status(200).json({ success: true, message: `Welcome ${req.user}!`});
  })
  // all other routes - 404
 app.all('*', (req, res) => {

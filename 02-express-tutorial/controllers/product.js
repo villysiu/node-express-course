@@ -46,4 +46,4 @@ const getProductById = (req, res) => {
 
 
 
-module.exports = {  getProducts, getProductById, searchProduct };    
+module.exports = {  getProducts, getProductById };

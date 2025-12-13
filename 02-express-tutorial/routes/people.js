@@ -3,25 +3,14 @@ const router = express.Router();
 
 const { addPerson, getPeople, getPersonById, updatePerson, deletePerson } = require("../controllers/people.js");
 
-router.get("/", (req, res) => {
-    getPeople(req, res);
-});
+router.get("/", getPeople);
 
-router.get("/:id", (req, res) => {
-    getPersonById(req, res);
-});
+router.get("/:id", getPersonById);
 
-router.post("/", (req, res) =>{
-    addPerson(req, res);
-})
+router.post("/", addPerson);
 
-router.put("/:id", (req, res) => {
-    updatePerson(req, res);
-});
+router.put("/:id", updatePerson);
 
-router.delete("/:id", (req, res) => {
-    deletePerson(req, res);
-});     
-
+router.delete("/:id",deletePerson);     
 
 module.exports = router;

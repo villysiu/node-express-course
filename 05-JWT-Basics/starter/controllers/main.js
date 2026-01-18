@@ -1,5 +1,5 @@
 
-const CustomAPIError = require('../errors/custom-error')
+const CustomAPIError = require('../errors')
 //jwt.io
 const jwt = require('jsonwebtoken')
 
@@ -12,8 +12,7 @@ const login = async (req, res) => {
 
      console.log(username, password)
     if (!username || !password) {
-        // throw new BadRequestError('Please provide email and password')
-        throw new BadRequestError('Please provide email and password', 400)
+        throw new BadRequestError('Please provide user name and password')
     }
     //just for demo, usually from DB
     const id = new Date().getDate()
@@ -22,9 +21,6 @@ const login = async (req, res) => {
                             process.env.JWT_SECRET,
                             { expiresIn: '30d'}
                         )
-                        console.log("in login")
-    console.log(token)
-        console.log(process.env.JWT_SECRET)
     res.status(200).json({ msg: 'user created', token })
 }
 
